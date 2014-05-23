@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for FILE in $(find $OPENSHIFT_REPO_DIR -type f -name *.erb)
+do
+  echo Filling in template for $FILE and creating new file: ${FILE/.erb/}
+  erb $FILE > ${FILE/.erb/}
+  echo Deleting template file $FILE
+  rm $FILE
+done
+
